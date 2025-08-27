@@ -45,3 +45,12 @@ A Visual Studio Code extension that generates Dart module structures with views,
 3. Right-click on the folder and select "GetX: Generate Module"
 4. Enter a module name (only lowercase letters, numbers, and underscores allowed)
 5. The extension will generate the module structure with appropriate files and folders
+
+# 打包成 .vsix
+```
+# 全局安装vsce
+npm install -g @vscode/vsce
+
+# 在扩展项目根目录执行，生成 .vsix 文件
+vsce package
+```

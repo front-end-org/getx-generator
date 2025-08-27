@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import * as tools from './tools';
 
 export function activate(context: vscode.ExtensionContext) {
   // 注册命令
@@ -53,26 +54,28 @@ export function activate(context: vscode.ExtensionContext) {
         }
 
         // 创建子文件夹: views, bindings, controllers
-        const subFolders = ['views', 'bindings', 'controllers'];
-        for (const subFolder of subFolders) {
+        const subFolders = tools.subFolders;
+        const dartFiles = tools.dartFiles;
+        for (let i = 0; i < subFolders.length; i++) {
+          const subFolder = subFolders[i];
           const subFolderPath = path.join(folderPath, subFolder);
           if (!fs.existsSync(subFolderPath)) {
             fs.mkdirSync(subFolderPath, { recursive: true });
           }
 
           // 创建Dart文件
-          const fileName = `${moduleName}_${subFolder}.dart`;
+          const fileName = `${moduleName}_${dartFiles[i]}.dart`;
           const filePath = path.join(subFolderPath, fileName);
 
           if (!fs.existsSync(filePath)) {
             // 根据不同的子文件夹写入不同的内容
             let fileContent = '';
             if (subFolder === 'bindings') {
-              fileContent = get_bindings(moduleName);
+              fileContent = tools.get_binding(moduleName);
             } else if (subFolder === 'controllers') {
-              fileContent = get_controllers(moduleName);
+              fileContent = tools.get_controller(moduleName);
             } else if (subFolder === 'views') {
-              fileContent = get_views(moduleName);
+              fileContent = tools.get_view(moduleName);
             } else {
               fileContent = `// ${fileName}\n\n`;
             }
@@ -90,48 +93,5 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(disposable);
 }
 
-// 工具函数：将下划线命名转为帕斯卡命名（首字母大写的驼峰命名）
-function toPascalCase(str: string): string {
-  return str.split('_')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('');
-}
-
-function get_bindings(moduleName: string): string {
-  return `import 'package:get/get.dart';
-import '../controllers/${moduleName}_controller.dart';
-
-class ${toPascalCase(moduleName)}Binding implements Bindings {
-  @override
-  void dependencies() {
-     Get.lazyPut<${toPascalCase(moduleName)}Controller>(() => ${toPascalCase(moduleName)}Controller());
-  }
-}`;
-}
-
-function get_controllers(moduleName: string): string {
-  return `import 'package:get/get.dart';
-
-class ${toPascalCase(moduleName)}Controller implements GetxController {
-}`;
-}
-
-function get_views(_moduleName: string): string {
-  const mPC = `${toPascalCase(_moduleName)}`;
-  return `import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../controllers/nav_bar_controller.dart';
-
-class ${mPC}View extends GetView<${mPC}Controller> {
-  const ${mPC}View({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}`;
-}
-
 // 当扩展被禁用时调用
-export function deactivate() {}
+export function deactivate() { }
