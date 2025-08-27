@@ -1,0 +1,54 @@
+{
+  "name": "dart-module-generator",
+  "displayName": "Dart Module Generator",
+  "description": "Generate Dart module structure with views, bindings and controllers",
+  "version": "0.0.1",
+  "publisher": "story5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/story5/vscode-dart-module-generator.git"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:dart-module-generator.generateModule"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "dart-module-generator.generateModule",
+        "title": "GetX: Generate Module"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "dart-module-generator.generateModule",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "eslint": "^8.38.0",
+    "typescript": "^5.0.4",
+    "@vscode/test-electron": "^2.3.0"
+  }
+}
