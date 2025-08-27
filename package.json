@@ -6,7 +6,7 @@
   "publisher": "story5",
   "repository": {
     "type": "git",
-    "url": "https://github.com/story5/vscode-dart-module-generator.git"
+    "url": "https://github.com/front-end-org/getx-generator.git"
   },
   "engines": {
     "vscode": "^1.80.0"
