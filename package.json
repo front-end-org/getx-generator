@@ -1,8 +1,8 @@
 {
-  "name": "dart-module-generator",
-  "displayName": "Dart Module Generator",
+  "name": "getx-generator",
+  "displayName": "GetX Generator",
   "description": "Generate Dart module structure with views, bindings and controllers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "story5",
   "repository": {
     "type": "git",
@@ -15,20 +15,20 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:dart-module-generator.generateModule"
+    "onCommand:getx-generator.generateModule"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "dart-module-generator.generateModule",
+        "command": "getx-generator.generateModule",
         "title": "GetX: Generate Module"
       }
     ],
     "menus": {
       "explorer/context": [
         {
-          "command": "dart-module-generator.generateModule",
+          "command": "getx-generator.generateModule",
           "group": "navigation"
         }
       ]

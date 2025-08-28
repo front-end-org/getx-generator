@@ -6,7 +6,7 @@ import * as tools from './tools';
 export function activate(context: vscode.ExtensionContext) {
   // 注册命令
   const disposable = vscode.commands.registerCommand(
-    'dart-module-generator.generateModule',
+    'getx-generator.generateModule',
     async (uri: vscode.Uri) => {
       // 检查是否右键点击了文件夹
       if (!uri || uri.scheme !== 'file') {
