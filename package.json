@@ -15,6 +15,11 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "dart",
+    "flutter",
+    "getx"
+  ],
   "activationEvents": [
     "onCommand:getx-generator.generateModule"
   ],
