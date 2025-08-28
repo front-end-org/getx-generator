@@ -1,4 +1,4 @@
-# Dart Module Generator
+# GetX Generator
 
 A Visual Studio Code extension that generates Dart module structures with views, bindings, and controllers for GetX architecture.
 
