@@ -43,7 +43,7 @@ class ${className}View extends GetView<${className}Controller> {
 
   @override
   Widget build(BuildContext context) {
-    return GetX<NavBarController>(
+    return GetX<${className}Controller>(
       builder: (controller) {
         return Container();
       },
