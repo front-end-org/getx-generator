@@ -2,7 +2,7 @@
   "name": "getx-generator",
   "displayName": "GetX Generator",
   "description": "Generate Dart module structure with views, bindings and controllers",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "story5",
   "icon": "logo.jpg",
   "repository": {
